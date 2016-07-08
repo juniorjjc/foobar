@@ -8,3 +8,4 @@ C:\Users\bboyj\Desktop\foobar\FirstAppCS\FirstAppCS\obj\Debug\FirstAppCS.Propert
 C:\Users\bboyj\Desktop\foobar\FirstAppCS\FirstAppCS\obj\Debug\FirstAppCS.csproj.GenerateResource.Cache
 C:\Users\bboyj\Desktop\foobar\FirstAppCS\FirstAppCS\obj\Debug\FirstAppCS.exe
 C:\Users\bboyj\Desktop\foobar\FirstAppCS\FirstAppCS\obj\Debug\FirstAppCS.pdb
+C:\Users\bboyj\Desktop\foobar\FirstAppCS\FirstAppCS\obj\Debug\FirstAppCS.csproj.ResolveComReference.cache

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace FirstAppCS
 {
@@ -48,9 +49,65 @@ namespace FirstAppCS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveDialog1 = new SaveFileDialog();            
+            saveDialog1.InitialDirectory = "c:";
+            saveDialog1.Title = "Save Report File";
+            saveDialog1.FileName = "";
+            saveDialog1.Filter = "Excel Files|*.xlsx";
+            if (saveDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
 
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                for (int i = 1; i < listView1.Columns.Count + 1; i++)
+                {
+                    xlWorkSheet.Cells[1, i] = listView1.Columns[i - 1].Text;
+                }
+
+                for (int i = 0; i < listView1.Items.Count; i++)
+                {
+                    for (int j = 0; j < listView1.Columns.Count; j++)
+                    {
+                        xlWorkSheet.Cells[i + 2, j + 1] = listView1.Items[i].SubItems[j].Text;
+                    }
+
+                }
+
+                xlWorkBook.SaveCopyAs(saveDialog1.FileName.ToString());
+                xlWorkBook.Saved = true;
+
+                xlApp.Quit();
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+            }           
+        
         }
 
-       
+    private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+
     }
 }
