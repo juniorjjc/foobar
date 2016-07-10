@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="expedienteModelStoreContainer" CdmEntityContainer="expedienteEntities">
+    <EntitySetMapping Name="curso">
+      <EntityTypeMapping TypeName="expedienteModel.curso">
+        <MappingFragment StoreEntitySet="curso">
+          <ScalarProperty Name="NRC" ColumnName="NRC" />
+          <ScalarProperty Name="ASIGNATURA" ColumnName="ASIGNATURA" />
+          <ScalarProperty Name="CREDITOS" ColumnName="CREDITOS" />
+          <ScalarProperty Name="MODALIDAD" ColumnName="MODALIDAD" />
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
